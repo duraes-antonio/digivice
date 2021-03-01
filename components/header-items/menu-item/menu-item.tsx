@@ -1,7 +1,7 @@
-import style from './menu-item.module.scss';
 import React, { CSSProperties } from 'react';
-import { HeaderLink } from '../../../models/headerLink';
 import Link from 'next/link';
+import style from './menu-item.module.scss';
+import { HeaderLink } from '../../../models/headerLink';
 
 const getItem = (l: HeaderLink) => {
   if (l.imgUrl) {
@@ -11,16 +11,19 @@ const getItem = (l: HeaderLink) => {
   }
   return <i className={`fas fa-${l.iconName}`} style={{ fontSize: '18px' }} />;
 };
-export const MenuItem = (props: { l: HeaderLink }): JSX.Element => {
+const MenuItem = (props: { l: HeaderLink }): JSX.Element => {
+  const { l: link } = props;
   const cssProps = {
-    '--color-hover': props.l.color ?? 'currentColor',
+    '--color-hover': link.color ?? 'currentColor',
   } as CSSProperties;
   return (
-    <Link href={props.l.url}>
-      <a className={style.link} style={cssProps}>
-        {getItem(props.l)}
-        {props.l.title}
+    <Link href={link.url}>
+      <a className={style.link} style={cssProps} href={link.url}>
+        {getItem(link)}
+        {link.title}
       </a>
     </Link>
   );
 };
+
+export default MenuItem;
