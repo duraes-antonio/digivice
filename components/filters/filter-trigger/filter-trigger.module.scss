@@ -1,0 +1,47 @@
+@import "styles/mixin";
+@import "styles/placeholder";
+
+$color-primary: orange;
+$bg-color: #333;
+
+.trigger {
+  @extend %center-vert-flex;
+  background-color: $bg-color;
+  color: white;
+  border-radius: 0 0 10px 10px;
+  padding: 4px 12px 8px 40px;
+  position: relative;
+  text-transform: initial;
+  letter-spacing: .5px;
+  user-select: none;
+
+  &:hover, &:focus {
+    color: $color-primary;
+
+    .icon {
+      animation: move-arrow .75s linear infinite;
+    }
+  }
+
+  .icon {
+    @include circle(24px, $color-primary);
+    color: white;
+    left: 10px;
+    margin-right: 10px;
+    position: absolute;
+    transition: transform .75s;
+  }
+
+  .open {
+    transform: rotate(180deg);
+  }
+}
+
+@keyframes move-arrow {
+  0%, 100% {
+    bottom: 5px;
+  }
+  50% {
+    bottom: 25%;
+  }
+}

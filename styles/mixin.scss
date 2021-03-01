@@ -1,0 +1,36 @@
+@mixin size($width, $height: $width) {
+  width: $width;
+  height: $height;
+}
+
+@mixin min-size($width, $height: $width) {
+  min-width: $width;
+  min-height: $height;
+}
+
+@mixin max-size($width, $height: $width) {
+  max-width: $width;
+  max-height: $height;
+}
+
+@mixin min-max-width($width, $height: $width) {
+  min-width: $width;
+  max-width: $width;
+}
+
+@mixin min-max-size($width, $height: $width) {
+  @include min-size($width);
+  @include max-size($width);
+}
+
+@mixin circle($width, $bg-color) {
+  @include min-max-size($width);
+  border-radius: 50%;
+  background-color: $bg-color;
+}
+
+@mixin avatar-circular($width, $cor-borda, $espessura-borda) {
+  @include circle($width, white);
+  border: $espessura-borda solid $cor-borda;
+  overflow: hidden;
+}

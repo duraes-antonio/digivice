@@ -1,0 +1,128 @@
+@import "styles/placeholder";
+@import "styles/mixin";
+
+%badge {
+  color: white;
+  border-radius: 4px;
+  font-size: x-small;
+  letter-spacing: .5px;
+  padding: 2px 4px;
+  text-align: center;
+  text-transform: lowercase;
+  width: 100%;
+}
+
+%attributes {
+  @extend %badge;
+  opacity: .75;
+
+  &[data-type="data" i] {
+    background-color: #305cef;
+  }
+
+  &[data-type="vaccine" i] {
+    background-color: #00a300;
+  }
+
+  &[data-type="virus" i] {
+    background-color: #f20400;
+  }
+}
+
+%level {
+  @extend %badge;
+
+  &[data-type*="baby" i] {
+    background-color: #f20700;
+  }
+
+  &[data-type="rookie" i] {
+    background-color: #fece00;
+  }
+
+  &[data-type="champion" i] {
+    background-color: #65ff00;
+  }
+
+  &[data-type="ultimate" i] {
+    background-color: #00cdff;
+  }
+
+  &[data-type="mega" i] {
+    background-color: #9e67fd;
+  }
+}
+
+%type {
+  @extend %badge;
+  background-color: lightgrey;
+}
+
+%level, %type {
+  color: rgba(black, .7);
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.card {
+  background-color: white;
+  box-shadow: 2px 4px 5px rgba(black, .1);
+  border-radius: 5px;
+  cursor: pointer;
+  display: grid;
+  grid-row-gap: 10px;
+  overflow: hidden;
+  padding: 10px;
+  position: relative;
+  transition: all .2s;
+
+  &:hover {
+    box-shadow: 2px 4px 5px rgba(black, .25);
+    transform: scale(1.1);
+  }
+
+  .block__image {
+    @extend %center-flex;
+    max-height: 150px;
+  }
+
+  .img {
+    width: auto;
+    max-height: 150px;
+  }
+
+  .name {
+    //background-color: limegreen;
+    background: linear-gradient(90deg, orange 45%, transparent);
+    bottom: 40%;
+    color: white;
+    left: 0;
+    padding: 3px 70px 3px 10px;
+    position: absolute;
+  }
+
+  .attributes {
+    display: flex;
+
+    &__item {
+      @extend %attributes;
+
+      &:not(:last-child) {
+        margin-right: 5px;
+      }
+    }
+  }
+
+  .type__level {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 5px;
+  }
+  .level {
+    @extend %level;
+  }
+
+  .type {
+    @extend %type;
+  }
+}

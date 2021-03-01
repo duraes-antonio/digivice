@@ -1,0 +1,11 @@
+@import "styles/placeholder";
+
+.footer {
+  @extend %center-flex;
+  background-color: orange;
+  bottom: 0;
+  left: 0;
+  padding: 8px;
+  position: fixed;
+  width: 100vw;
+}

@@ -1,0 +1,47 @@
+@import "styles/placeholder";
+@import "styles/variables";
+
+$bg-color: #333;
+
+.filter {
+  @extend %center-flex;
+  background-color: rgba($bg-color, .75);
+  width: 100%;
+  z-index: 1;
+  transition: background-color 0.6s ease;
+
+  &__content {
+    display: grid;
+    overflow: hidden;
+    text-align: center;
+    transition: max-height .5s ease;
+    width: 100%;
+
+    .selects {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      grid-column-gap: 25px;
+      grid-row-gap: 10px;
+    }
+  }
+
+  &__main {
+    @extend %center-grid;
+    background-color: rgba($bg-color, 1);
+    max-width: $max-width-main;
+    padding: 10px;
+    position: relative;
+    width: 100%;
+  }
+
+  &__title {
+    color: white;
+  }
+
+  &__trigger {
+    position: absolute;
+    top: 100%;
+    right: 10px;
+    z-index: 1;
+  }
+}

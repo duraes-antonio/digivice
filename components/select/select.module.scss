@@ -1,0 +1,12 @@
+@import "styles/placeholder";
+
+.select {
+  @extend %center-vert-flex;
+
+  .icon {
+    filter: drop-shadow(1px 1px 4px rgba(black, .75));
+    color: white;
+    font-size: 24px;
+    margin-right: 7px;
+  }
+}
